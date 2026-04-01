@@ -6,15 +6,18 @@ import { useNavigate } from "react-router-dom";
 import usePostScore from "../hooks/usePostScore";
 
 const Score = () => {
-  const { state } = useContext(GameContext);
-  const { playerName, score, difficulty } = state;
+  const { state, dispatch } = useContext(GameContext);
+  const { playerName, score, difficulty, scoreSubmitted } = state;
   const scoreMessage = scoreMessages.find((n) => score <= n.maxScore); //para el mensaje del score
   const navigate = useNavigate();
 
   //tanstack - post score
   const mutate = usePostScore();
   useEffect(() => {
-    mutate({ playerName, score, difficulty });
+    if (!scoreSubmitted) {
+      mutate({ playerName, score, difficulty });
+      dispatch({ type: "SCORE_SUBMITTED" });
+    }
   }, []);
 
   return (

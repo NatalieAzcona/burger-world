@@ -1,11 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Box, Heading, Text, VStack } from "@chakra-ui/react";
 import { GameContext } from "../context/GameContext";
 import useGetScores from "../hooks/useGetScores";
+import { useNavigate } from "react-router-dom";
 
 const Ranking = () => {
   const { state } = useContext(GameContext);
   const { playerName, score, difficulty } = state;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!state.difficulty) navigate("/");
+  }, []);
 
   const scores = useGetScores(difficulty);
   const index = scores?.findIndex(

@@ -6,16 +6,18 @@ import "./DropZone.scss";
 
 const DropZone = ({ builtBurger }) => {
   return (
-    <div>
-      <Droppable id="drop-zone" className="drop-zone">
-        <h3>Construye tu hamburguesa</h3>
-        {builtBurger.map((i, index) => {
-          const ingredient = ingredients.find((ing) => ing.id === i);
-          return (
-            <IngredientPiece key={index} className={ingredient.className} />
-          );
-        })}
-      </Droppable>
+    <div className="drop-zone-container">
+      <h3>Construye tu hamburguesa</h3>
+      <div className="drop-zone-wrapper">
+        <Droppable id="drop-zone" className="drop-zone">
+          {builtBurger.map((i, index) => {
+            const ingredient = ingredients.find((ing) => ing.id === i);
+            return (
+              <IngredientPiece key={index} className={ingredient.className} />
+            );
+          })}
+        </Droppable>
+      </div>
     </div>
   );
 };

@@ -7,7 +7,8 @@ export const Game_Initial = {
   streak: 0,
   targetBurger: null,
   playerName: "",
-  difficulty: "easy",
+  difficulty: null,
+  scoreSubmitted: false,
 };
 
 export const gameReducer = (state, action) => {
@@ -45,10 +46,15 @@ export const gameReducer = (state, action) => {
         phase: "showing",
         targetBurger: buildHamburger(levels[state.difficulty].layers),
       };
+
     case "GAME_OVER":
-      return { ...state, phase: "gameover" };
+      return { ...state, phase: "score", scoreSubmitted: false };
+    case "SCORE_SUBMITTED":
+      return { ...state, scoreSubmitted: true };
 
     default:
       return state;
   }
 };
+
+

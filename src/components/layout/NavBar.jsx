@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const links = [
   { label: "Home", to: "/" },
   { label: "Play", to: "/play" },
-  { label: "Score", to: "/score" },
+  { label: "Ranking", to: "/ranking" },
 ];
 
 const NavBar = () => {

@@ -45,7 +45,7 @@ const OrderTicket = ({ gameTimer }) => {
             borderColor="choco"
             boxShadow="0 4px 0 0 var(--chakra-colors-choco)"
             _hover={{ bg: "berry", transform: "translateY(-1px)" }}>
-              ¡Ya lo memoricé!
+              ¡Ya la memoricé!
             </Button>
         </VStack>
       </Box>

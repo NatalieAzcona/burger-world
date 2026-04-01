@@ -1,5 +1,4 @@
 import React from "react";
-import "../../assets/styles/ingredients.scss";
 import { ingredients } from "../../data/ingredients";
 
 export const IngredientPiece = ({ className }) => {
