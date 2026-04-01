@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Box, Heading, Text, VStack } from "@chakra-ui/react";
 import { GameContext } from "../context/GameContext";
 import useGetScores from "../hooks/useGetScores";
 
@@ -12,23 +13,38 @@ const Ranking = () => {
   );
   const position = index + 1;
 
-  const inicio = Math.max(0, position - 5);
-  const fin = inicio + 10;
-  const visibleScores = scores?.slice(inicio, fin);
+  //top 10 en score
+  const visibleScores = scores?.slice(0, 10);
 
   return (
-    <div>
-      {index === -1 ? (
-        <p>Error al cargar tu récord</p>
-      ) : (
-        <p>Tu posición es {position}</p>
-      )}
-      <ul>
-        {visibleScores?.map((e) => (
-          <li key={e._id}>{e.playerName}</li>
-        ))}
-      </ul>
-    </div>
+    <Box display="flex" justifyContent="center" alignItems="center" minH="80vh">
+      <Box
+        maxW="480px"
+        w="100%"
+        p={8}
+        border="3px solid"
+        borderColor="choco"
+        bg="#fff8f6"
+        borderRadius="3xl"
+        boxShadow="0 10px 0 0 var(--chakra-colors-bun), inset 0 2px 0 rgba(255,255,255,0.6)"
+      >
+        <VStack gap={4} align="stretch">
+          <Heading color="choco" textAlign="center">Top 10 modo: {difficulty}</Heading>
+          {index === -1 ? (
+            <Text color="choco" textAlign="center">Error al cargar tu récord</Text>
+          ) : (
+            <Text color="choco" textAlign="center">Tu posición es {position}</Text>
+          )}
+          <VStack gap={2} align="stretch">
+            {visibleScores?.map((e) => (
+              <Text key={e._id} color="choco">
+                {visibleScores.indexOf(e) + 1}. {e.playerName} | Score: {e.score}
+              </Text>
+            ))}
+          </VStack>
+        </VStack>
+      </Box>
+    </Box>
   );
 };
 

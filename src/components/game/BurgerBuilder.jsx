@@ -3,22 +3,19 @@ import React, { useContext, useState } from "react";
 import { Box, Button, HStack, VStack } from "@chakra-ui/react";
 import { GameContext } from "../../context/GameContext";
 import compareHamburger from "../../utils/compareHamburger";
-import "./BurgerBuilder.scss";
-import useCountdown from "../../hooks/useCountdown";
 import GameInfo from "./GameInfo";
 import IngredientsPanel from "./ingredientsPanel";
 import DropZone from "./DropZone";
 
-const BurgerBuilder = () => {
+const BurgerBuilder = ({gameTimer}) => {
   const { state, dispatch } = useContext(GameContext);
   const { targetBurger } = state; //aqui la hamburguesa del ticket
   const [builtBurger, setBuiltBurger] = useState([]); //aqui la hamburguesa que construiremos en array
-  const countdown = useCountdown({sec: 60, onComplete: "GAME_OVER", activePhase: "building", currentPhase: state.phase});
 
   return (
     <>
       <HStack justify="space-between" align="flex-start" w="100%" px={4}>
-        {countdown}
+        {gameTimer}
         <GameInfo />
       </HStack>
       <DragDropProvider
@@ -40,10 +37,10 @@ const BurgerBuilder = () => {
           boxShadow="0 10px 0 0 var(--chakra-colors-bun), inset 0 2px 0 rgba(255,255,255,0.6)"
         >
           <VStack gap={4}>
-            <div className="burger-builder">
+            <HStack gap="4rem" justify="center" align="flex-start">
               <IngredientsPanel />
               <DropZone builtBurger={builtBurger} />
-            </div>
+            </HStack>
             <HStack>
             <Button
               onClick={() => {

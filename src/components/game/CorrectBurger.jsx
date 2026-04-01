@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
 import { GameContext } from "../../context/GameContext";
-import "../../assets/styles/emoji.scss";
-
-const CorrectBurger = () => {
+const CorrectBurger = ({ gameTimer }) => {
   const { state, dispatch } = useContext(GameContext);
-  const score = state.score;
+  const { score } = state;
 
   return (
+    <>
+    {gameTimer}
     <Box display="flex" justifyContent="center" alignItems="center" minH="80vh">
       <Box
         maxW="480px"
@@ -47,6 +47,7 @@ const CorrectBurger = () => {
         </VStack>
       </Box>
     </Box>
+    </>
   );
 };
 

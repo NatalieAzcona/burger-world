@@ -1,8 +1,6 @@
 import { IngredientPiece } from "./IngredientsCard";
-import "../../assets/styles/ingredients.scss";
 import { GameContext } from "../../context/GameContext";
 import { useContext } from "react";
-import "./OrderTicket.scss";
 import {
   Box,
   Button,
@@ -13,33 +11,45 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-const OrderTicket = ({ timeLeft }) => {
-  const { state } = useContext(GameContext);
+const OrderTicket = ({ gameTimer }) => {
+  const { state, dispatch } = useContext(GameContext);
   const { targetBurger } = state;
 
   return (
-    <Box
-      maxW="560px"
-      mx="auto"
-      mt={6}
-      p={6}
-      border="3px solid"
-      borderColor="choco"
-      bg="#fff8f6"
-      borderRadius="3xl"
-      boxShadow="0 10px 0 0 var(--chakra-colors-bun), inset 0 2px 0 rgba(255,255,255,0.6)"
-    >
-      <VStack gap={4} align="center">
-        <h3>El cliente te ha pedido esta hamburguesa: </h3>
-        <p>{timeLeft}</p>
-        <div className="hamburger">
-          {targetBurger &&
-            targetBurger.map((ingredient, index) => (
-              <IngredientPiece key={index} className={ingredient.className} />
-            ))}
-        </div>
-      </VStack>
-    </Box>
+    <>
+    {gameTimer}
+      <Box
+        maxW="560px"
+        mx="auto"
+        mt={6}
+        p={6}
+        border="3px solid"
+        borderColor="choco"
+        bg="#fff8f6"
+        borderRadius="3xl"
+        boxShadow="0 10px 0 0 var(--chakra-colors-bun), inset 0 2px 0 rgba(255,255,255,0.6)"
+      >
+        <VStack gap={4} align="center">
+          <h3>El cliente te ha pedido esta hamburguesa: </h3>
+          <div className="hamburger">
+            {targetBurger &&
+              targetBurger.map((ingredient, index) => (
+                <IngredientPiece key={index} className={ingredient.className} />
+              ))}
+          </div>
+          <Button onClick={() => dispatch ({type:"START_BUILDING"})}   
+            bg="ketchup"
+            color="white"
+            border="3px solid"
+            borderRadius="full"
+            borderColor="choco"
+            boxShadow="0 4px 0 0 var(--chakra-colors-choco)"
+            _hover={{ bg: "berry", transform: "translateY(-1px)" }}>
+              ¡Ya lo memoricé!
+            </Button>
+        </VStack>
+      </Box>
+    </>
   );
 };
 
