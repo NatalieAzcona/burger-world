@@ -1,8 +1,8 @@
-import AppRouter from "./app/router"
-import "./app/App.scss"
+import AppRouter from "./app/router";
+import "./app/App.scss";
 
 function App() {
-  return <AppRouter />
+  return <AppRouter />;
 }
 
-export default App
+export default App;

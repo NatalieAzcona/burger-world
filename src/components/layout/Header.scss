@@ -1,7 +1,7 @@
 .header {
-  border-bottom: 1px solid #ececec;
+  border-bottom: 3px solid #c9894b;
   padding: 16px 20px 12px;
-  background-color: #fff8f1;
+  background: linear-gradient(120deg, #fff7e8 0%, #ffd64a 45%, #ffb347 100%);
 }
 
 .header__content {
@@ -12,11 +12,12 @@
   margin: 0;
   font-size: 1.5rem;
   line-height: 1.2;
-  color: #2f2f2f;
+  color: #523726;
 }
 
 .header__subtitle {
   margin: 4px 0 0;
-  color: #666;
+  color: #7a4f34;
   font-size: 0.95rem;
+  font-weight: 600;
 }

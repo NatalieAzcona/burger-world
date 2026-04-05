@@ -2,6 +2,12 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #fff4f4;
+  background-image:
+    linear-gradient(90deg, rgba(235, 79, 79, 0.18) 50%, transparent 50%),
+    linear-gradient(rgba(235, 79, 79, 0.18) 50%, transparent 50%);
+  background-size: 34px 34px;
+  background-position: 0 0, 17px 17px;
 }
 
 .app-layout__main {

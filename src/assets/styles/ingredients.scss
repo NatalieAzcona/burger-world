@@ -1,80 +1,110 @@
+.draggable:hover > *:not(.tomatos):not(.onions) {
+  outline: 2px dashed #523726;
+  outline-offset: 2px;
+}
+
+.draggable:hover .tomato,
+.draggable:hover .onion {
+  outline: 2px dashed #523726;
+  outline-offset: 2px;
+}
+
 .ingredients-view {
   display: flex;
-  place-items: center;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  background-color: #ead7b6;
+  background-color: transparent;
 }
 
 .hamburger {
-  margin-top: 16rem;
-  position: relative;
-  width: 20rem;
-  min-height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+  width: 18rem;
+  min-height: 12rem;
 }
 
 .bun {
-  width: 20rem;
-  height: 4rem;
+  width: 14rem;
+  height: 3rem;
   background-color: #ebaa65;
   border-radius: 1rem;
   z-index: 10;
 }
 
 .bun--top {
-  height: 5rem;
+  height: 3.8rem;
   border-radius: 5rem 5rem 1rem 1rem;
-  transform: translateY(-10rem);
 }
 
 .bun--bottom {
-  height: 5rem;
+  height: 3.4rem;
   border-radius: 1rem 1rem 2rem 2rem;
-  transform: translateY(8rem);
 }
 
 .beef {
-  width: 20rem;
-  height: 4rem;
+  width: 14rem;
+  height: 2.6rem;
   background-color: #5c3610;
   border-radius: 1rem;
-  transform: translateY(0);
   z-index: 10;
 }
 
 .salad {
-  width: 20rem;
-  height: 2rem;
+  width: 14rem;
+  height: 1.3rem;
   background-color: #468f1b;
   border-radius: 1rem;
-  transform: translateY(-6rem);
 }
 
 .cheese {
-  width: 20rem;
-  height: 2rem;
+  width: 14rem;
+  height: 1.3rem;
   background-color: #faa12d;
   border-radius: 1rem;
-  transform: translateY(-3rem);
 }
 
 .tomatos {
   display: flex;
-  width: 20rem;
-  height: 2rem;
-  gap: 1rem;
-  transform: translateY(5rem);
+  width: 14rem;
+  height: 1.4rem;
+  gap: 0.2rem;
 }
 
 .tomato {
-  height: 80%;
+  height: 1.3rem;
   background-color: #e74c3c;
   border-radius: 1rem;
 }
 
 .tomato--1 {
-  width: 8rem;
+  width: 5.9rem;
 }
 
 .tomato--2 {
-  width: 11rem;
+  width: 7.9rem;
+}
+
+.onions {
+  display: flex;
+  width: 14rem;
+  height: 1.4rem;
+  gap: 0.2rem;
+}
+
+.onion {
+  height: 1.3rem;
+  background-color: #d1d1d1;
+  border-radius: 1rem;
+}
+
+.onion--1 {
+  width: 7.9rem;
+}
+
+.onion--2 {
+  width: 5.9rem;
 }
