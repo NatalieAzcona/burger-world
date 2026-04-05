@@ -6,8 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "lint:fix": "eslint ./src --ext .jsx,.js, --quiet --fix --ignore-path ./.gitignore",
-    "lint:format": "prettier --loglevel warn --write \"./**/*.{js,jsx,css,md,json}\"",
+    "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint ./src --quiet --fix",
+    "lint:format": "prettier --log-level warn --write \"./**/*.{js,jsx,css,md,json}\"",
     "lint": "npm run lint:format && npm run lint:fix"
   },
   "dependencies": {
