@@ -1,6 +1,3 @@
-import React from "react";
-import { ingredients } from "../../data/ingredients";
-
 export const IngredientPiece = ({ className }) => {
   if (className === "tomatos") {
     return (
@@ -20,20 +17,3 @@ export const IngredientPiece = ({ className }) => {
 
   return <div className={className}></div>;
 };
-
-function IngredientsCard() {
-  return (
-    <section className="ingredients-view">
-      <div className="hamburger">
-        {ingredients.map((ingredient) => (
-          <IngredientPiece
-            key={ingredient.id}
-            className={ingredient.className}
-          />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-export default IngredientsCard;

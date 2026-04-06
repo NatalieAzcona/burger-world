@@ -1,6 +1,6 @@
 import React from "react";
 import { ingredients } from "../../data/ingredients";
-import { IngredientPiece } from "./IngredientsCard";
+import { IngredientPiece } from "./IngredientPiece";
 import Droppable from "./Droppable";
 import "./DropZone.scss";
 
