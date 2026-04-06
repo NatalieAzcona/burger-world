@@ -12,11 +12,13 @@ const GameInfo = () => {
       minW="140px"
       border="3px solid"
       borderColor="choco"
-      bg="#fff8f6"
+      bg="paper"
       borderRadius="2xl"
       boxShadow="0 4px 0 0 var(--chakra-colors-bun)"
     >
-      <Text fontWeight="bold" color="choco">Nombre: {playerName}</Text>
+      <Text fontWeight="bold" color="choco">
+        Nombre: {playerName}
+      </Text>
       <Text color="choco">Score: {score}</Text>
       <Text color="choco">Modo: {difficulty}</Text>
     </Box>

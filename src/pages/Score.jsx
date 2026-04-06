@@ -28,15 +28,22 @@ const Score = () => {
         p={8}
         border="3px solid"
         borderColor="choco"
-        bg="#fff8f6"
+        bg="paper"
         borderRadius="3xl"
         boxShadow="0 10px 0 0 var(--chakra-colors-bun), inset 0 2px 0 rgba(255,255,255,0.6)"
         textAlign="center"
       >
         <VStack gap={4}>
-          <Heading color="choco">¡Tenemos noticias para ti, {playerName}!</Heading>
-          <Text color="choco">Tu score es <strong>{score}</strong> para un nivel <strong>{difficulty}</strong></Text>
-          <Text color="choco" fontSize="lg">{scoreMessage.message}</Text>
+          <Heading color="choco">
+            ¡Tenemos noticias para ti, {playerName}!
+          </Heading>
+          <Text color="choco">
+            Tu score es <strong>{score}</strong> para un nivel{" "}
+            <strong>{difficulty}</strong>
+          </Text>
+          <Text color="choco" fontSize="lg">
+            {scoreMessage.message}
+          </Text>
           <HStack gap={4} mt={2}>
             <Button
               onClick={() => navigate("/ranking")}

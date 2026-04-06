@@ -2,20 +2,19 @@ import React, { useContext, useState, useEffect } from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { GameContext } from "../context/GameContext";
 
-const useCountdown = ({sec, onComplete}) => {
+const useCountdown = ({ sec, onComplete }) => {
   const { dispatch } = useContext(GameContext);
   const [count, setCount] = useState(sec);
 
   useEffect(() => {
-
-  //Si llega a 0, pasamos onComplete
+    //Si llega a 0, pasamos onComplete
     if (count === 0) {
       dispatch({ type: onComplete });
       return;
     }
-      
-    if (count <= 0) return; 
-    
+
+    if (count <= 0) return;
+
     const interval = setInterval(() => {
       setCount((prev) => prev - 1);
     }, 1000);
@@ -41,9 +40,15 @@ const useCountdown = ({sec, onComplete}) => {
       border="3px solid"
       borderColor="choco"
       boxShadow="0 4px 0 0 var(--chakra-colors-choco)"
-      bg="#fff8f6"
+      bg="paper"
     >
-      <Text fontWeight="bold" fontSize="2xl" color="choco" key={count} animation="pulse 0.3s ease-out">
+      <Text
+        fontWeight="bold"
+        fontSize="2xl"
+        color="choco"
+        key={count}
+        animation="pulse 0.3s ease-out"
+      >
         {count}
       </Text>
     </Box>
@@ -51,6 +56,3 @@ const useCountdown = ({sec, onComplete}) => {
 };
 
 export default useCountdown;
-
-
-//al desmontar play te cargas la partida y el tiempo da igual porque se corta alli.

@@ -7,7 +7,7 @@ import GameInfo from "./GameInfo";
 import IngredientsPanel from "./ingredientsPanel";
 import DropZone from "./DropZone";
 
-const BurgerBuilder = ({gameTimer}) => {
+const BurgerBuilder = ({ gameTimer }) => {
   const { state, dispatch } = useContext(GameContext);
   const { targetBurger } = state; //aqui la hamburguesa del ticket
   const [builtBurger, setBuiltBurger] = useState([]); //aqui la hamburguesa que construiremos en array
@@ -32,7 +32,7 @@ const BurgerBuilder = ({gameTimer}) => {
           p={6}
           border="3px solid"
           borderColor="choco"
-          bg="#fff8f6"
+          bg="paper"
           borderRadius="3xl"
           boxShadow="0 10px 0 0 var(--chakra-colors-bun), inset 0 2px 0 rgba(255,255,255,0.6)"
         >
@@ -42,40 +42,40 @@ const BurgerBuilder = ({gameTimer}) => {
               <DropZone builtBurger={builtBurger} />
             </HStack>
             <HStack>
-            <Button
-              onClick={() => {
-                const builtBurgerUndo = [...builtBurger];
-                builtBurgerUndo.pop();
-                setBuiltBurger(builtBurgerUndo);
-              }}
-              bg="ash"
-              color="white"
-              border="3px solid"
-              borderRadius="full"
-              borderColor="choco"
-              boxShadow="0 4px 0 0 var(--chakra-colors-choco)"
-              _hover={{ bg: "gray.500", transform: "translateY(-1px)" }}
-            >
-              Deshacer
-            </Button>
-            <Button
-              onClick={() => {
-                const compared = compareHamburger(targetBurger, builtBurger);
-                compared
-                  ? dispatch({ type: "BURGER_COMPLETE" })
-                  : dispatch({ type: "WRONG_ATTEMPT" });
-              }}
-              bg="ketchup"
-              color="white"
-              border="3px solid"
-              borderRadius="full"
-              borderColor="choco"
-              boxShadow="0 4px 0 0 var(--chakra-colors-choco)"
-              _hover={{ bg: "berry", transform: "translateY(-1px)" }}
-            >
-              Comprobar
-            </Button>
-          </HStack>
+              <Button
+                onClick={() => {
+                  const builtBurgerUndo = [...builtBurger];
+                  builtBurgerUndo.pop();
+                  setBuiltBurger(builtBurgerUndo);
+                }}
+                bg="ash"
+                color="white"
+                border="3px solid"
+                borderRadius="full"
+                borderColor="choco"
+                boxShadow="0 4px 0 0 var(--chakra-colors-choco)"
+                _hover={{ bg: "gray.500", transform: "translateY(-1px)" }}
+              >
+                Deshacer
+              </Button>
+              <Button
+                onClick={() => {
+                  const compared = compareHamburger(targetBurger, builtBurger);
+                  compared
+                    ? dispatch({ type: "BURGER_COMPLETE" })
+                    : dispatch({ type: "WRONG_ATTEMPT" });
+                }}
+                bg="ketchup"
+                color="white"
+                border="3px solid"
+                borderRadius="full"
+                borderColor="choco"
+                boxShadow="0 4px 0 0 var(--chakra-colors-choco)"
+                _hover={{ bg: "berry", transform: "translateY(-1px)" }}
+              >
+                Comprobar
+              </Button>
+            </HStack>
           </VStack>
         </Box>
       </DragDropProvider>

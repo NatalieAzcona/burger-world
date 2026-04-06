@@ -30,21 +30,28 @@ const Ranking = () => {
         p={8}
         border="3px solid"
         borderColor="choco"
-        bg="#fff8f6"
+        bg="paper"
         borderRadius="3xl"
         boxShadow="0 10px 0 0 var(--chakra-colors-bun), inset 0 2px 0 rgba(255,255,255,0.6)"
       >
         <VStack gap={4} align="stretch">
-          <Heading color="choco" textAlign="center">Top 10 modo: {difficulty}</Heading>
+          <Heading color="choco" textAlign="center">
+            Top 10 modo: {difficulty}
+          </Heading>
           {index === -1 ? (
-            <Text color="choco" textAlign="center">Error al cargar tu récord</Text>
+            <Text color="choco" textAlign="center">
+              Error al cargar tu récord
+            </Text>
           ) : (
-            <Text color="choco" textAlign="center">Tu posición es {position}</Text>
+            <Text color="choco" textAlign="center">
+              Tu posición es {position}
+            </Text>
           )}
           <VStack gap={2} align="stretch">
             {visibleScores?.map((e) => (
               <Text key={e._id} color="choco">
-                {visibleScores.indexOf(e) + 1}. {e.playerName} | Score: {e.score}
+                {visibleScores.indexOf(e) + 1}. {e.playerName} | Score:{" "}
+                {e.score}
               </Text>
             ))}
           </VStack>
