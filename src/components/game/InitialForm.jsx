@@ -25,7 +25,7 @@ const InitialForm = () => {
 
   const onSubmit = (data) => {
     dispatch({ type: "START_GAME", data: data }); //data al contexto
-    navigate("/play"); //envío al play
+    navigate("/play");
   };
 
   return (
@@ -36,7 +36,7 @@ const InitialForm = () => {
       p={6}
       border="3px solid"
       borderColor="choco"
-      bg="#fff8f6"
+      bg="paper"
       borderRadius="3xl"
       boxShadow="0 10px 0 0 var(--chakra-colors-bun), inset 0 2px 0 rgba(255,255,255,0.6)"
     >
@@ -93,8 +93,8 @@ const InitialForm = () => {
               border="2px solid"
               borderColor="ketchup"
               borderRadius="full"
-              bg="#fff7f7"
-              _hover={{ bg: "#ffefef" }}
+              bg="snowpink"
+              _hover={{ bg: "rosepale" }}
               cursor="pointer"
               w="full"
             >
@@ -115,8 +115,8 @@ const InitialForm = () => {
               border="2px solid"
               borderColor="ketchup"
               borderRadius="full"
-              bg="#fff7f7"
-              _hover={{ bg: "#ffefef" }}
+              bg="snowpink"
+              _hover={{ bg: "rosepale" }}
               cursor="pointer"
               w="full"
             >
@@ -141,8 +141,8 @@ const InitialForm = () => {
               border="2px solid"
               borderColor="ketchup"
               borderRadius="full"
-              bg="#fff7f7"
-              _hover={{ bg: "#ffefef" }}
+              bg="snowpink"
+              _hover={{ bg: "rosepale" }}
               cursor="pointer"
               w="full"
             >

@@ -2,15 +2,18 @@ import React, { useContext, useState, useEffect } from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { GameContext } from "../context/GameContext";
 
-const useCountdown = ({sec, onComplete, activePhase, currentPhase}) => {
+const useCountdown = ({ sec, onComplete }) => {
   const { dispatch } = useContext(GameContext);
   const [count, setCount] = useState(sec);
 
   useEffect(() => {
-    if (count === 0 && currentPhase === activePhase) {
+    //Si llega a 0, pasamos onComplete
+    if (count === 0) {
       dispatch({ type: onComplete });
       return;
     }
+
+    if (count <= 0) return;
 
     const interval = setInterval(() => {
       setCount((prev) => prev - 1);
@@ -21,10 +24,10 @@ const useCountdown = ({sec, onComplete, activePhase, currentPhase}) => {
     };
   }, [count]);
 
-  //Resetear al cambiar de fase
+  //Resetea el contador con dependencia en sec: 60 o 5
   useEffect(() => {
     setCount(sec);
-  }, [currentPhase]);
+  }, [sec]);
 
   return (
     <Box
@@ -37,9 +40,15 @@ const useCountdown = ({sec, onComplete, activePhase, currentPhase}) => {
       border="3px solid"
       borderColor="choco"
       boxShadow="0 4px 0 0 var(--chakra-colors-choco)"
-      bg="#fff8f6"
+      bg="paper"
     >
-      <Text fontWeight="bold" fontSize="2xl" color="choco" key={count} animation="pulse 0.3s ease-out">
+      <Text
+        fontWeight="bold"
+        fontSize="2xl"
+        color="choco"
+        key={count}
+        animation="pulse 0.3s ease-out"
+      >
         {count}
       </Text>
     </Box>

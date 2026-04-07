@@ -1,6 +1,6 @@
 import React from "react";
 import Draggable from "./Draggable";
-import { IngredientPiece } from "./IngredientsCard";
+import { IngredientPiece } from "./IngredientPiece";
 import { ingredients } from "../../data/ingredients";
 
 const IngredientsPanel = () => {

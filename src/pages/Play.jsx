@@ -1,29 +1,32 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import OrderTicket from "../components/game/OrderTicket";
 import { GameContext } from "../context/GameContext";
 import BurgerBuilder from "../components/game/BurgerBuilder";
 import WrongBurger from "../components/game/WrongBurger";
 import CorrectBurger from "../components/game/CorrectBurger";
-import GameOver from "../components/game/GameOver";
 import useCountdown from "../hooks/useCountdown";
+import { useNavigate } from "react-router-dom";
+import Score from "../pages/Score";
 
 const Play = () => {
-  const { state, dispatch } = useContext(GameContext);
-  const countdown = useCountdown({sec: 5, onComplete: "START_BUILDING", activePhase: "showing" , currentPhase: state.phase});
+  const { state } = useContext(GameContext);
+
+  const gameTimer = useCountdown({ sec: 60, onComplete: "GAME_OVER" });
+
+  //si no hay dificulty que redirija
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!state.difficulty) navigate("/");
+  }, []);
 
   const views = {
-    showing: <OrderTicket />,
-    building: <BurgerBuilder />,
-    error: <WrongBurger />,
-    success: <CorrectBurger />,
-    gameover: <GameOver />,
+    showing: <OrderTicket gameTimer={gameTimer} />,
+    building: <BurgerBuilder gameTimer={gameTimer} />,
+    error: <WrongBurger gameTimer={gameTimer} />,
+    success: <CorrectBurger gameTimer={gameTimer} />,
+    score: <Score />,
   };
 
-  return (
-    <>
-      {state.phase === "showing" ? countdown : null}
-      {views[state.phase]}
-    </>
-  );
+  return <>{views[state.phase]}</>;
 };
 export default Play;

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const links = [
   { label: "Home", to: "/" },
   { label: "Play", to: "/play" },
-  { label: "Score", to: "/score" },
+  { label: "Ranking", to: "/ranking" },
 ];
 
 const NavBar = () => {
@@ -15,7 +15,7 @@ const NavBar = () => {
       gap={3}
       align="center"
       wrap="wrap"
-      bg="#fff8f6"
+      bg="paper"
       p={2}
       border="3px solid"
       borderColor="choco"
@@ -31,7 +31,7 @@ const NavBar = () => {
               py={2}
               border="2px solid"
               borderColor={isActive ? "choco" : "ketchup"}
-              bg={isActive ? "ketchup" : "#fff1ef"}
+              bg={isActive ? "ketchup" : "peach"}
               color={isActive ? "white" : "choco"}
               fontWeight={isActive ? "bold" : "semibold"}
               textTransform="uppercase"
@@ -47,7 +47,7 @@ const NavBar = () => {
               _hover={{
                 textDecoration: "none",
                 color: isActive ? "white" : "choco",
-                bg: isActive ? "berry" : "#ffe2dd",
+                bg: isActive ? "berry" : "salmon",
                 transform: "translateY(-1px)",
               }}
             >

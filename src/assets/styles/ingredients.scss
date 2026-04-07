@@ -108,3 +108,17 @@
 .onion--2 {
   width: 5.9rem;
 }
+
+@media (max-width: 500px) {
+  .hamburger {
+    width: 10rem;
+  }
+  .bun, .beef, .salad, .cheese, .tomatos, .onions {
+    width: 10rem;
+  }
+  .tomato--1 { width: 3.2rem; }
+  .tomato--2 { width: 4.5rem; }
+  .onion--1  { width: 4.5rem; }
+  .onion--2  { width: 3.2rem; }
+  .drop-zone { width: 10rem; }
+}

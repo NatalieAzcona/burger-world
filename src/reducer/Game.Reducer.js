@@ -1,5 +1,5 @@
-import { buildHamburger } from "../utils/buildHamburger";
 import { levels } from "../data/levels";
+import { buildHamburger } from "../utils/buildHamburger";
 
 export const Game_Initial = {
   phase: "showing",
@@ -7,7 +7,8 @@ export const Game_Initial = {
   streak: 0,
   targetBurger: null,
   playerName: "",
-  difficulty: "easy",
+  difficulty: null,
+  scoreSubmitted: false,
 };
 
 export const gameReducer = (state, action) => {
@@ -31,7 +32,7 @@ export const gameReducer = (state, action) => {
         streak: state.streak + 1,
         score: state.score + 1,
         targetBurger: buildHamburger(levels[state.difficulty].layers),
-      }; //tengo que poner showing porque pasa al siguiente estado
+      };
     case "WRONG_ATTEMPT":
       return {
         ...state,
@@ -45,8 +46,11 @@ export const gameReducer = (state, action) => {
         phase: "showing",
         targetBurger: buildHamburger(levels[state.difficulty].layers),
       };
+
     case "GAME_OVER":
-      return { ...state, phase: "gameover" };
+      return { ...state, phase: "score", scoreSubmitted: false };
+    case "SCORE_SUBMITTED":
+      return { ...state, scoreSubmitted: true };
 
     default:
       return state;
