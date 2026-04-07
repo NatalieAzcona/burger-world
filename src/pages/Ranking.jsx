@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Box, Heading, Text, VStack } from "@chakra-ui/react";
 import { GameContext } from "../context/GameContext";
 import useGetScores from "../hooks/useGetScores";

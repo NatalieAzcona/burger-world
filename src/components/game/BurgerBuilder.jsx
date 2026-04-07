@@ -1,5 +1,5 @@
 import { DragDropProvider } from "@dnd-kit/react";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Box, Button, HStack, VStack } from "@chakra-ui/react";
 import { GameContext } from "../../context/GameContext";
 import compareHamburger from "../../utils/compareHamburger";
@@ -27,6 +27,7 @@ const BurgerBuilder = ({ gameTimer }) => {
       >
         <Box
           maxW="fit-content"
+          minW={{ base: "320px", md: "auto" }}
           mx="auto"
           mt={6}
           p={6}
@@ -37,7 +38,11 @@ const BurgerBuilder = ({ gameTimer }) => {
           boxShadow="0 10px 0 0 var(--chakra-colors-bun), inset 0 2px 0 rgba(255,255,255,0.6)"
         >
           <VStack gap={4}>
-            <HStack gap="4rem" justify="center" align="flex-start">
+            <HStack
+              gap={{ base: "2rem", lg: "4rem" }}
+              justify="center"
+              align="flex-start"
+            >
               <IngredientsPanel />
               <DropZone builtBurger={builtBurger} />
             </HStack>

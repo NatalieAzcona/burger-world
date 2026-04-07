@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { GameContext } from "../../context/GameContext";
 
