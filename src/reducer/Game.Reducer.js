@@ -4,7 +4,6 @@ import { buildHamburger } from "../utils/buildHamburger";
 export const Game_Initial = {
   phase: "showing",
   score: 0,
-  streak: 0,
   targetBurger: null,
   playerName: "",
   difficulty: null,
@@ -17,7 +16,6 @@ export const gameReducer = (state, action) => {
       return {
         ...state,
         phase: "showing",
-        streak: 0,
         score: 0,
         playerName: action.data.playerName,
         difficulty: action.data.difficulty,
@@ -29,7 +27,6 @@ export const gameReducer = (state, action) => {
       return {
         ...state,
         phase: "success",
-        streak: state.streak + 1,
         score: state.score + 1,
         targetBurger: buildHamburger(levels[state.difficulty].layers),
       };
@@ -37,7 +34,6 @@ export const gameReducer = (state, action) => {
       return {
         ...state,
         phase: "error",
-        streak: state.streak - 1,
         targetBurger: buildHamburger(levels[state.difficulty].layers),
       };
     case "NEXT_BURGER":

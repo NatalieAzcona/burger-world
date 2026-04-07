@@ -19,4 +19,25 @@
     outline-offset: 4px;
     border-radius: 4rem 4rem 2rem 2rem;
   }
-  
+
+@media (max-width: 768px) {
+  .drop-zone-wrapper {
+    border-radius: 2rem 2rem 1rem 1rem;
+  }
+  .drop-zone {
+    width: 7rem;
+    min-height: 12rem;
+  }
+  .drop-zone .bun,
+  .drop-zone .beef,
+  .drop-zone .salad,
+  .drop-zone .cheese,
+  .drop-zone .tomatos,
+  .drop-zone .onions {
+    width: 7rem;
+  }
+  .drop-zone .tomato--1 { width: 2.95rem; }
+  .drop-zone .tomato--2 { width: 3.95rem; }
+  .drop-zone .onion--1  { width: 3.95rem; }
+  .drop-zone .onion--2  { width: 2.95rem; }
+}
