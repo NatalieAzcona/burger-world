@@ -109,16 +109,41 @@
   width: 5.9rem;
 }
 
-@media (max-width: 500px) {
-  .hamburger {
-    width: 10rem;
+@media (max-width: 768px) {
+  .hamburger--panel .bun,
+  .drop-zone .bun        { height: 1.9rem; }
+  .hamburger--panel .bun--top,
+  .drop-zone .bun--top   { height: 2.4rem; }
+  .hamburger--panel .bun--bottom,
+  .drop-zone .bun--bottom { height: 2.1rem; }
+  .hamburger--panel .beef,
+  .drop-zone .beef       { height: 1.6rem; }
+  .hamburger--panel .salad,
+  .hamburger--panel .cheese,
+  .drop-zone .salad,
+  .drop-zone .cheese     { height: 0.8rem; }
+  .hamburger--panel .tomatos,
+  .hamburger--panel .onions,
+  .drop-zone .tomatos,
+  .drop-zone .onions     { height: 0.9rem; }
+  .hamburger--panel .tomato,
+  .hamburger--panel .onion,
+  .drop-zone .tomato,
+  .drop-zone .onion      { height: 0.8rem; }
+
+  .hamburger--panel {
+    width: 7rem;
   }
-  .bun, .beef, .salad, .cheese, .tomatos, .onions {
-    width: 10rem;
+  .hamburger--panel .bun,
+  .hamburger--panel .beef,
+  .hamburger--panel .salad,
+  .hamburger--panel .cheese,
+  .hamburger--panel .tomatos,
+  .hamburger--panel .onions {
+    width: 7rem;
   }
-  .tomato--1 { width: 3.2rem; }
-  .tomato--2 { width: 4.5rem; }
-  .onion--1  { width: 4.5rem; }
-  .onion--2  { width: 3.2rem; }
-  .drop-zone { width: 10rem; }
+  .hamburger--panel .tomato--1 { width: 2.95rem; }
+  .hamburger--panel .tomato--2 { width: 3.95rem; }
+  .hamburger--panel .onion--1  { width: 3.95rem; }
+  .hamburger--panel .onion--2  { width: 2.95rem; }
 }
