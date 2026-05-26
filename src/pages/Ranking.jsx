@@ -35,12 +35,14 @@ const Ranking = () => {
         boxShadow="0 10px 0 0 var(--chakra-colors-bun), inset 0 2px 0 rgba(255,255,255,0.6)"
       >
         <VStack gap={4} align="stretch">
-        <Heading color="choco" textAlign="center">
+          <Heading color="choco" textAlign="center">
             Top 10 modo: {difficulty}
           </Heading>
 
           {isLoading && (
-            <Text color="choco" textAlign="center">Cargando...</Text>
+            <Text color="choco" textAlign="center">
+              Cargando...
+            </Text>
           )}
 
           {isError && (
@@ -52,7 +54,9 @@ const Ranking = () => {
           {!isLoading && !isError && (
             <VStack gap={2} align="stretch">
               {position && (
-                <Text color="choco" textAlign="center">Tu posición es {position}</Text>
+                <Text color="choco" textAlign="center">
+                  Tu posición es {position}
+                </Text>
               )}
               {visibleScores?.length > 0 ? (
                 visibleScores.map((e, i) => (
@@ -61,11 +65,12 @@ const Ranking = () => {
                   </Text>
                 ))
               ) : (
-                <Text color="choco" textAlign="center">No hay puntuaciones todavía</Text>
+                <Text color="choco" textAlign="center">
+                  No hay puntuaciones todavía
+                </Text>
               )}
             </VStack>
           )}
-
         </VStack>
       </Box>
     </Box>

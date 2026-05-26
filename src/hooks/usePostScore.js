@@ -11,11 +11,10 @@ const usePostScore = () => {
         body: JSON.stringify(data),
       });
       if (!response.ok) throw new Error("Error al guardar la puntuación");
-      return response.text() 
-
+      return response.text();
     },
   });
-  return {mutate, isError};
+  return { mutate, isError };
 };
 
 export default usePostScore;

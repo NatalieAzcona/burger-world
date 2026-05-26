@@ -18,7 +18,9 @@ const NotFound = () => {
         textAlign="center"
       >
         <VStack gap={4}>
-          <Heading color="choco" fontSize="6xl">404</Heading>
+          <Heading color="choco" fontSize="6xl">
+            404
+          </Heading>
           <Heading color="choco">Página no encontrada</Heading>
           <Text color="choco">Esta ruta no existe en nuestro menú</Text>
           <Button

@@ -11,7 +11,7 @@ const useGetScores = (difficulty) => {
       return response.json();
     },
   });
-  return {data, isLoading, isError};
+  return { data, isLoading, isError };
 };
 
 export default useGetScores;
