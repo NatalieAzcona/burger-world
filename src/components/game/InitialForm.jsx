@@ -16,7 +16,7 @@ const InitialForm = () => {
   const { dispatch } = useContext(GameContext);
   const navigate = useNavigate();
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       playerName: "",
       difficulty: "easy",
@@ -73,9 +73,14 @@ const InitialForm = () => {
             id="playerName"
             {...register("playerName", {
               required: "No olvides escribir tu nombre :)",
-              minLength: 2,
+              validate: (value) => value.trim().length >= 2 || "El nombre no puede ser solo espacios"
             })}
           />
+                    {errors.playerName && (
+            <Text color="ketchup" fontSize="sm">
+              {errors.playerName.message}
+            </Text>
+          )}
         </Box>
 
         <Box>

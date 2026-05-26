@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import Layout from "../components/layout/Layout";
 import Play from "../pages/Play";
 import Ranking from "../pages/Ranking";
+import NotFound from "../pages/NotFound";
 
 const AppRouter = () => {
   return (
@@ -11,6 +12,7 @@ const AppRouter = () => {
         <Route index element={<Home />} />
         <Route path="/play" element={<Play />} />
         <Route path="/ranking" element={<Ranking />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

@@ -12,7 +12,7 @@ const Score = () => {
   const navigate = useNavigate();
 
   //tanstack - post score
-  const mutate = usePostScore();
+  const { mutate, isError } = usePostScore();
   useEffect(() => {
     if (!scoreSubmitted) {
       mutate({ playerName, score, difficulty });
@@ -44,6 +44,11 @@ const Score = () => {
           <Text color="choco" fontSize="lg">
             {scoreMessage.message}
           </Text>
+            {isError && (
+              <Text color="ketchup" fontSize="sm">
+                No se pudo guardar tu puntuación (servidor no disponible)
+              </Text>
+            )}
           <HStack gap={4} mt={2}>
             <Button
               onClick={() => navigate("/ranking")}

@@ -13,11 +13,11 @@ const Ranking = () => {
     if (!state.difficulty) navigate("/");
   }, []);
 
-  const scores = useGetScores(difficulty);
+  const { data: scores, isLoading, isError } = useGetScores(difficulty);
   const index = scores?.findIndex(
     (e) => e.playerName === playerName && e.score === score,
   );
-  const position = index + 1;
+  const position = index >= 0 ? index + 1 : null;
 
   //top 10 en score
   const visibleScores = scores?.slice(0, 10);
@@ -35,26 +35,37 @@ const Ranking = () => {
         boxShadow="0 10px 0 0 var(--chakra-colors-bun), inset 0 2px 0 rgba(255,255,255,0.6)"
       >
         <VStack gap={4} align="stretch">
-          <Heading color="choco" textAlign="center">
+        <Heading color="choco" textAlign="center">
             Top 10 modo: {difficulty}
           </Heading>
-          {index === -1 ? (
-            <Text color="choco" textAlign="center">
-              Error al cargar tu récord
-            </Text>
-          ) : (
-            <Text color="choco" textAlign="center">
-              Tu posición es {position}
+
+          {isLoading && (
+            <Text color="choco" textAlign="center">Cargando...</Text>
+          )}
+
+          {isError && (
+            <Text color="ketchup" textAlign="center">
+              El servidor no está disponible
             </Text>
           )}
-          <VStack gap={2} align="stretch">
-            {visibleScores?.map((e) => (
-              <Text key={e._id} color="choco">
-                {visibleScores.indexOf(e) + 1}. {e.playerName} | Score:{" "}
-                {e.score}
-              </Text>
-            ))}
-          </VStack>
+
+          {!isLoading && !isError && (
+            <VStack gap={2} align="stretch">
+              {position && (
+                <Text color="choco" textAlign="center">Tu posición es {position}</Text>
+              )}
+              {visibleScores?.length > 0 ? (
+                visibleScores.map((e, i) => (
+                  <Text key={e._id} color="choco">
+                    {i + 1}. {e.playerName} | Score: {e.score}
+                  </Text>
+                ))
+              ) : (
+                <Text color="choco" textAlign="center">No hay puntuaciones todavía</Text>
+              )}
+            </VStack>
+          )}
+
         </VStack>
       </Box>
     </Box>
