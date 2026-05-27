@@ -5,7 +5,6 @@ import { GameContext } from "../context/GameContext";
 const useCountdown = () => {
   const { state, dispatch } = useContext(GameContext);
 
-
   useEffect(() => {
     //Si llega a 0, pasamos onComplete
     if (state.timeLeft === 0) {
@@ -16,7 +15,7 @@ const useCountdown = () => {
     if (state.timeLeft <= 0) return;
 
     const interval = setInterval(() => {
-      dispatch({type: "TICK"});
+      dispatch({ type: "TICK" });
     }, 1000);
 
     return () => {
