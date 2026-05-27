@@ -1,33 +1,28 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { GameContext } from "../context/GameContext";
 
-const useCountdown = ({ sec, onComplete }) => {
-  const { dispatch } = useContext(GameContext);
-  const [count, setCount] = useState(sec);
+const useCountdown = () => {
+  const { state, dispatch } = useContext(GameContext);
+
 
   useEffect(() => {
     //Si llega a 0, pasamos onComplete
-    if (count === 0) {
-      dispatch({ type: onComplete });
+    if (state.timeLeft === 0) {
+      dispatch({ type: "GAME_OVER" });
       return;
     }
 
-    if (count <= 0) return;
+    if (state.timeLeft <= 0) return;
 
     const interval = setInterval(() => {
-      setCount((prev) => prev - 1);
+      dispatch({type: "TICK"});
     }, 1000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [count]);
-
-  //Resetea el contador con dependencia en sec: 60 o 5
-  useEffect(() => {
-    setCount(sec);
-  }, [sec]);
+  }, [state.timeLeft]);
 
   return (
     <Box
@@ -46,10 +41,10 @@ const useCountdown = ({ sec, onComplete }) => {
         fontWeight="bold"
         fontSize="2xl"
         color="choco"
-        key={count}
+        key={state.timeLeft}
         animation="pulse 0.3s ease-out"
       >
-        {count}
+        {state.timeLeft}
       </Text>
     </Box>
   );

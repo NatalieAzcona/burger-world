@@ -8,6 +8,7 @@ export const Game_Initial = {
   playerName: "",
   difficulty: null,
   scoreSubmitted: false,
+  timeLeft: 60
 };
 
 export const gameReducer = (state, action) => {
@@ -20,6 +21,7 @@ export const gameReducer = (state, action) => {
         playerName: action.data.playerName,
         difficulty: action.data.difficulty,
         targetBurger: buildHamburger(levels[action.data.difficulty].layers),
+        timeLeft: 60
       };
     case "START_BUILDING":
       return { ...state, phase: "building" };
@@ -29,12 +31,14 @@ export const gameReducer = (state, action) => {
         phase: "success",
         score: state.score + 1,
         targetBurger: buildHamburger(levels[state.difficulty].layers),
+        timeLeft: Math.min(state.timeLeft + 10, 99)
       };
     case "WRONG_ATTEMPT":
       return {
         ...state,
         phase: "error",
         targetBurger: buildHamburger(levels[state.difficulty].layers),
+        timeLeft: Math.max(state.timeLeft - 10, 5)
       };
     case "NEXT_BURGER":
       return {
@@ -48,6 +52,9 @@ export const gameReducer = (state, action) => {
     case "SCORE_SUBMITTED":
       return { ...state, scoreSubmitted: true };
 
+    case "TICK":
+      return { ...state, timeLeft: state.timeLeft - 1 };
+       
     default:
       return state;
   }

@@ -11,7 +11,7 @@ import Score from "../pages/Score";
 const Play = () => {
   const { state } = useContext(GameContext);
 
-  const gameTimer = useCountdown({ sec: 60, onComplete: "GAME_OVER" });
+  const gameTimer = useCountdown();
 
   //si no hay dificulty que redirija
   const navigate = useNavigate();
