@@ -4,7 +4,7 @@ import { Box, Button, HStack, VStack } from "@chakra-ui/react";
 import { GameContext } from "../../context/GameContext";
 import compareHamburger from "../../utils/compareHamburger";
 import GameInfo from "./GameInfo";
-import IngredientsPanel from "./ingredientsPanel";
+import IngredientsPanel from "./IngredientsPanel";
 import DropZone from "./DropZone";
 
 const BurgerBuilder = ({ gameTimer }) => {
