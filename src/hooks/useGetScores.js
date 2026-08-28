@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 const useGetScores = (difficulty) => {
-  const url = `http://localhost:3000/scores?difficulty=${difficulty}`;
+  const url = `${import.meta.env.VITE_API_URL}/scores?difficulty=${difficulty}`;
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["scores", difficulty],

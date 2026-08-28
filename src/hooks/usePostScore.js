@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 
 const usePostScore = () => {
-  const url = "http://localhost:3000/scores/newScore";
+  const url = `${import.meta.env.VITE_API_URL}/scores/newScore`;
 
   const { mutate, isError } = useMutation({
     mutationFn: async (data) => {
