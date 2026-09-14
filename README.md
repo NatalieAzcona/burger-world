@@ -2,6 +2,11 @@
 
 Juego de memoria basado en hamburguesas. El jugador memoriza el ticket del pedido durante unos segundos y luego debe reconstruir la hamburguesa exacta usando drag & drop. Al finalizar el tiempo, la puntuación se guarda en un ranking.
 
+## Demo
+
+- 🎮 Jugar: [burger-world-nine.vercel.app](https://burger-world-nine.vercel.app)
+- 🔌 API: [burger-world.onrender.com](https://burger-world.onrender.com)
+
 ## Instalación y uso
 
 ### Requisitos previos
