@@ -31,14 +31,14 @@ export const gameReducer = (state, action) => {
         phase: "success",
         score: state.score + 1,
         targetBurger: buildHamburger(levels[state.difficulty].layers),
-        timeLeft: Math.min(state.timeLeft + 10, 99),
+        timeLeft: Math.min(state.timeLeft + 3, 99),
       };
     case "WRONG_ATTEMPT":
       return {
         ...state,
         phase: "error",
         targetBurger: buildHamburger(levels[state.difficulty].layers),
-        timeLeft: Math.max(state.timeLeft - 10, 5),
+        timeLeft: Math.max(state.timeLeft - 10, 0),
       };
     case "NEXT_BURGER":
       return {

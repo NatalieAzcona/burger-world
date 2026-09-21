@@ -3,7 +3,7 @@ import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
 import { GameContext } from "../../context/GameContext";
 const CorrectBurger = ({ gameTimer }) => {
   const { state, dispatch } = useContext(GameContext);
-  const { score } = state;
+  const { score, timeLeft } = state;
 
   return (
     <>
@@ -42,7 +42,9 @@ const CorrectBurger = ({ gameTimer }) => {
               </figure>
             </div>
             <Button
-              onClick={() => dispatch({ type: "NEXT_BURGER" })}
+              onClick={() =>
+                dispatch({ type: timeLeft <= 0 ? "GAME_OVER" : "NEXT_BURGER" })
+              }
               bg="ketchup"
               color="white"
               border="3px solid"
