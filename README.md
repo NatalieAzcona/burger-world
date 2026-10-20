@@ -1,64 +1,66 @@
+**English** · [Español](README.es.md)
+
 # Burger World 🍔
 
-Juego de memoria basado en hamburguesas. El jugador memoriza el ticket del pedido durante unos segundos y luego debe reconstruir la hamburguesa exacta usando drag & drop. Al finalizar el tiempo, la puntuación se guarda en un ranking.
+A burger-themed memory game. The player memorizes the order ticket for a few seconds, then has to rebuild the exact burger using drag & drop. When time runs out, the score is saved to a ranking.
 
 ## Demo
 
-- 🎮 Jugar: [burger-world-nine.vercel.app](https://burger-world-nine.vercel.app)
+- 🎮 Play: [burger-world-nine.vercel.app](https://burger-world-nine.vercel.app)
 - 🔌 API: [burger-world.onrender.com](https://burger-world.onrender.com)
 
-## Instalación y uso
+## Installation and usage
 
-### Requisitos previos
+### Prerequisites
 
 - Node.js 18+
-- Backend corriendo en `http://localhost:3000` con los endpoints:
+- Backend running on `http://localhost:3000` with the endpoints:
   - `GET /scores?difficulty=easy|medium|hard`
   - `POST /scores/newScore`
 
-### Arrancar el proyecto
+### Running the project
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Cómo se juega
+## How to play
 
-1. Introduce tu nombre y elige la dificultad (fácil, medio, difícil)
-2. Memoriza la hamburguesa del ticket — tienes pocos segundos
-3. Reconstruye la hamburguesa arrastrando los ingredientes al orden correcto
-4. Al acabar el tiempo, se guarda tu puntuación y puedes ver el ranking
+1. Enter your name and choose a difficulty (easy, medium, hard)
+2. Memorize the burger on the ticket — you only have a few seconds
+3. Rebuild the burger by dragging the ingredients in the right order
+4. When time runs out, your score is saved and you can check the ranking
 
-## Tecnologías
+## Tech stack
 
-| Librería              | Uso                             |
-| --------------------- | ------------------------------- |
-| React 19 + Vite       | Framework y bundler             |
-| React Router v7       | Navegación entre páginas        |
-| Chakra UI v3          | Componentes y sistema de diseño |
-| react-hook-form       | Formulario de inicio            |
-| @tanstack/react-query | Fetching del ranking            |
-| @dnd-kit              | Drag & drop de ingredientes     |
-| framer-motion         | Animaciones                     |
+| Library                | Purpose                     |
+| ----------------------- | ---------------------------- |
+| React 19 + Vite         | Framework and bundler         |
+| React Router v7         | Page navigation               |
+| Chakra UI v3            | Components and design system  |
+| react-hook-form         | Start screen form              |
+| @tanstack/react-query | Ranking data fetching          |
+| @dnd-kit                | Drag & drop for ingredients    |
+| framer-motion           | Animations                     |
 
-## Requisitos del proyecto cubiertos
+## Project requirements covered
 
-### 3 páginas con React Router
+### 3 pages with React Router
 
-- `/` — Home con formulario de inicio
-- `/play` — Pantalla de juego
-- `/ranking` — Tabla de puntuaciones
+- `/` — Home with the start form
+- `/play` — Game screen
+- `/ranking` — Score table
 
-### Estados del juego (useReducer)
+### Game state (useReducer)
 
-El estado global se gestiona con `useReducer` en `GameProvider`. Incluye: `phase`, `score`, `targetBurger`, `playerName`, `difficulty` y `scoreSubmitted`.
+Global state is managed with `useReducer` in `GameProvider`. It includes: `phase`, `score`, `targetBurger`, `playerName`, `difficulty`, and `scoreSubmitted`.
 
-Las fases del juego son: `showing → building → success/error → score`.
+The game phases are: `showing → building → success/error → score`.
 
-### useEffect para peticiones de datos
+### useEffect for data requests
 
-En `Score.jsx` se usa `useEffect` para enviar la puntuación a la API al terminar la partida:
+`Score.jsx` uses `useEffect` to send the score to the API when the round ends:
 
 ```js
 useEffect(() => {
@@ -69,43 +71,43 @@ useEffect(() => {
 }, []);
 ```
 
-Para el GET del ranking se usa **React Query** (`useQuery`), que gestiona internamente el ciclo de fetching sin necesidad de escribir un `useEffect` manual.
+The ranking `GET` uses **React Query** (`useQuery`), which handles the fetching lifecycle internally without writing a manual `useEffect`.
 
-### API propia
+### Own API
 
-El proyecto se conecta a una API REST propia con dos endpoints: lectura del ranking por dificultad y escritura de nuevas puntuaciones.
+The project talks to its own REST API with two endpoints: reading the ranking by difficulty and writing new scores.
 
-### Formulario con react-hook-form
+### Form with react-hook-form
 
-`InitialForm.jsx` gestiona nombre del jugador y dificultad con validación integrada.
+`InitialForm.jsx` manages the player's name and difficulty with built-in validation.
 
-### Componentes reutilizables
+### Reusable components
 
-`IngredientPiece`, `OrderTicket`, `Draggable`, `DropZone`, `GameInfo`, `Layout`, `NavBar`, entre otros.
+`IngredientPiece`, `OrderTicket`, `Draggable`, `DropZone`, `GameInfo`, `Layout`, `NavBar`, among others.
 
 ### Custom hooks
 
-- `useCountdown` — temporizador con dispatch automático al llegar a 0
-- `useGetScores` — fetching del ranking por dificultad
-- `usePostScore` — envío de puntuación a la API
+- `useCountdown` — timer that auto-dispatches when it reaches 0
+- `useGetScores` — fetches the ranking by difficulty
+- `usePostScore` — sends the score to the API
 
 ### useContext
 
-`GameContext` es consumido por `Play`, `Score`, `Ranking`, `InitialForm` y `useCountdown`.
+`GameContext` is consumed by `Play`, `Score`, `Ranking`, `InitialForm`, and `useCountdown`.
 
-## Estructura del proyecto
+## Project structure
 
 ```
 src/
 ├── components/
-│   ├── game/       # Piezas del juego (drag & drop, ticket, ingredientes)
+│   ├── game/       # Game pieces (drag & drop, ticket, ingredients)
 │   └── layout/     # Header, Footer, NavBar, Layout
 ├── context/        # GameContext (createContext)
 ├── provider/       # GameProvider (useReducer + Provider)
-├── reducer/        # gameReducer + estado inicial
+├── reducer/        # gameReducer + initial state
 ├── hooks/          # useCountdown, useGetScores, usePostScore
 ├── pages/          # Home, Play, Score, Ranking
 ├── utils/          # buildHamburger, compareHamburger
 ├── data/           # ingredients, levels, scoreMessages
-└── theme.js        # Tokens de color de Chakra UI
+└── theme.js        # Chakra UI color tokens
 ```
